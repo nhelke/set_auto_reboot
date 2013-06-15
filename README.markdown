@@ -15,3 +15,10 @@ in order to activate the auto reboot on power failure setting.
 This has been tested on a Mac mini 2011.
 
 **WARNING!** The utility does no checking of what card it actually talking to. If you run this on a machine with a different device at that address the results are not defined and could cause permanent damage to your hardware. Only use this if you know what you are doing and use at own risk.
+
+Usage
+-----
+
+I use this software to set that bit on each boot of a Mac mini server I have at home and which runs FreeBSD because ZFS is the best filesystem there is.
+
+If you are interested in using this please give me a shout at nhelke+set_auto_reboot@gmail.com and I will be more than happy to help integrate this into your setup.
