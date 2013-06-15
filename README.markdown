@@ -1,7 +1,7 @@
 set_auto_reboot
 ===============
 
-This tiny utility set the control bit on the following card:
+This tiny FreeBSD utility set the control bit on the following card:
 
 	isab0@pci0:0:3:0:	class=0x060100 card=0xcb89106b chip=0x0d8010de rev=0xa2 hdr=0x00
 	    vendor     = 'nVidia Corporation'
