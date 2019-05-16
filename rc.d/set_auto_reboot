@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# the before line below is probably not the right way to do this but I can't
+# figure out how to force this script to be started as the very first one
+
+# PROVIDE: set_auto_reboot
+# REQUIRE:
+# BEFORE: growfs 
+# KEYWORD: 
+#
+
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# set_auto_rebot_enable (bool):	Set to NO by default.
+#			Set it to YES to enable tpmd.
+
+. /etc/rc.subr
+
+name="set_auto_reboot"
+rcvar=`set_rcvar`
+
+start_cmd="${name}_start"
+stop_cmd=":"
+
+load_rc_config $name
+: ${set_auto_reboot_enable:=no}
+: ${set_auto_reboot_msg="Nothing started."}
+
+
+set_auto_reboot_start ()
+{
+	/sbin/set_auto_reboot
+	echo "auto_reboot set"
+}
+
+run_rc_command "$1"
