@@ -20,9 +20,23 @@ int main() {
 	d.pi_sel.pc_bus = 0;
 	d.pi_sel.pc_dev = 3;
 	d.pi_sel.pc_func = 0;
+	d.pi_reg = 0x00;		// read the device and vendor IDs
+	d.pi_width = 4;
+
+	ret = ioctl(f, PCIOCREAD, &d);
+	if (ret != 0) {
+		perror("Unable to perform PCIOCREAD for device and vendor ID");
+		exit(3);
+	} else {
+		if (d.pi_data != 0x0d8010de){
+			printf ("device not found, expecting 0xd8010de found 0x%x\n", d.pi_data);
+			exit (5);
+		}
+	}
+
 	d.pi_reg = 0x7b;
 	d.pi_width = 1;
-
+	
 	ret = ioctl(f, PCIOCREAD, &d);
 	if (ret != 0) {
 		perror("Unable to perform PCIOCREAD");
